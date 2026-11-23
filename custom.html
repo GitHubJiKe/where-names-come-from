@@ -181,12 +181,18 @@
           <label class="form-label">8. 对孩子未来三十年的三句话人生期许<span class="req">*</span></label>
           <textarea class="form-textarea" name="wish" required placeholder="如：希望他内心笃定、温和有力量，哪怕身处喧嚣也能守住本心"></textarea>
         </div>
-        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center; font-size:17px;">生成访谈表 · 预约定制</button>
+        <div class="form-group">
+          <label class="form-label">9. 联系方式（微信 / 手机）<span class="req">*</span></label>
+          <input class="form-input" name="contact" required placeholder="微信号或手机号，用于发送首稿与收款沟通">
+          <p class="form-hint">仅用于本次预约联系，不会公开、不用于其他用途。</p>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center; font-size:17px;">提交预约 · 生成访谈表</button>
         <p class="form-hint" style="text-align:center;">提交即代表知悉并认同《服务交付标准与边界说明》。定制服务 980 元/单，3 个工作日交付首稿。</p>
       </form>
 
       <div class="result-box" id="result-box">
         <h3 style="font-size:18px; letter-spacing:2px; margin-bottom:12px;">访谈表已生成 ✓</h3>
+        <div id="submit-status" class="submit-status" hidden></div>
         <textarea id="result-text" readonly></textarea>
         <div style="display:flex; gap:20px; margin-top:20px; flex-wrap:wrap; align-items:center;">
           <div style="text-align:center;">
@@ -203,6 +209,8 @@
   </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+<script src="js/cloud.js"></script>
 <script src="js/common.js"></script>
 <script src="js/custom.js"></script>
 </body>

@@ -50,6 +50,18 @@ python3 build_surnames_all.py  # 标注拼音声调 → data/surnames_all.js
 - 多音字姓氏（仇 chóu、单 shàn、查 zhā、万俟 mòqí 等）在 `build_surnames_all.py` 的 `OVERRIDE` 表中勘误
 - 复姓按与名字相邻的末字声调归组
 
+## 云服务接入
+
+诊断（¥199）与定制（¥980）两个预约表单已接入 WorkBuddy Cloud Service 数据库：
+
+- **表 `leads`**：`service`（diagnosis / custom）、`ref_code`（受理编号）、`contact`（联系方式）、`surname`、`gender`、`answers`（JSONB 全量答案）、`created_at`
+- **RLS 策略**：仅开放 `INSERT` 给 `anon, authenticated`，**未开放 SELECT** —— 匿名端提交后读不回任何人的记录，避免联系方式泄露
+- **前端接入层** `js/cloud.js`：以 CDN 形式加载 `@tencent-ai/workbuddy-cloud-sdk@dev`，初始化参数来自云服务 `publicConfig`（`endpoint` / `publishableKey` / `oauthRelayBaseUrl`），这些值可安全存在于前端
+- **降级策略**：SDK 未加载或提交失败时，页面仍会本地生成完整文本并提示「请复制后扫码微信发送」，表单功能不会因云端异常而失效
+- **提交成功后**回显受理编号（如 `NYU173X5MA`），用户可凭编号在微信核对
+
+> 云环境与应用绑定同一个 release 域名，重新发布请复用同一 `applicationId`，否则域名变化会导致 Origin 校验失败。
+
 ## 合规声明
 
 本站不收八字、不算五格、不判吉凶，仅从文字学（本义、训诂、字形）与汉语音韵学（声调、平仄、谐音）角度提供命名参考，不承诺任何命理或运势效果。
