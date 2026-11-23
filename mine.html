@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>起名排雷自查｜100个必避高危字 + 办证前六步自检｜名有来处</title>
+<meta name="description" content="50个伪古风烂俗字、30个训诂翻车凶字、20个系统报错生僻字在线速查，附办证前六步魔鬼排雷自检表。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="sec-kicker">起名之前 · 先做减法</div>
+    <h1 class="page-title">排雷自查</h1>
+    <p class="page-subtitle">100 个起名高危字速查 + 办证前六步自检 —— 不踩雷的名字，已赢过 85% 的同龄人</p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:48px;">
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="mines">百字排雷表</button>
+      <button class="tab-btn" data-tab="checklist">六步自检表</button>
+    </div>
+
+    <!-- ===== 排雷表 ===== -->
+    <div id="tab-mines">
+      <div class="toolbar">
+        <input class="search-input" id="mine-search" placeholder="输入你正在考虑的字，立即查雷…如：梓、殇、䶮">
+        <select class="filter-select" id="mine-part">
+          <option value="">全部红线区</option>
+          <option value="伪古风烂俗字">① 伪古风烂俗字（50）</option>
+          <option value="训诂翻车字">② 训诂翻车字（30）</option>
+          <option value="生僻歧义字">③ 生僻歧义字（20）</option>
+        </select>
+      </div>
+      <div style="font-size:13.5px; color:var(--ink-faint); margin-bottom:16px;" id="mine-count"></div>
+      <div id="mine-list"></div>
+    </div>
+
+    <!-- ===== 六步自检 ===== -->
+    <div id="tab-checklist" style="display:none;">
+      <div class="check-progress" id="check-progress">已完成 <strong id="check-done">0</strong> / 6 道安全闸门</div>
+      <div class="card" style="max-width:860px; margin:0 auto; padding:32px;">
+        <div id="gate-list"></div>
+      </div>
+      <div class="notice" style="max-width:860px; margin:24px auto 0;">
+        <strong>使用说明：</strong>夫妻双方在去派出所办《出生医学证明》前，对准以下 6 道安全闸门逐一打勾。<strong>只要有一项未能通过，请立刻换字微调</strong>——六关全过，方可放心落户。
+      </div>
+    </div>
+
+    <div class="ink-divider"><span>◆</span></div>
+    <div style="text-align:center;">
+      <p style="color:var(--ink-soft); margin-bottom:20px;">排完了雷，不知道去哪里找好字？或者已有备选名拿不定主意？</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="library.html">去雅字库找好字</a>
+        <a class="btn btn-primary" href="diagnosis.html">预约五维诊断 ¥199</a>
+        <a class="btn btn-gold" href="custom.html">典籍定制 ¥980</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="data/mines.js"></script>
+<script src="js/common.js"></script>
+<script src="js/mine.js"></script>
+</body>
+</html>

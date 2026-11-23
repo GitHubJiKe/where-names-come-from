@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅字库 · 名句库｜名有来处</title>
+<meta name="description" content="300个《通用规范汉字表》低频高雅入名字库与120句经史安全化用名句，在线检索、按意象与平仄筛选。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="sec-kicker">学术工具 · 免费开放</div>
+    <h1 class="page-title">雅字库 · 名句库</h1>
+    <p class="page-subtitle">300 个一级/二级规范雅字 · 120 句剔除凶丧语境的经史名句 —— 起名先从好字里挑</p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:48px;">
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="chars">三百雅字库</button>
+      <button class="tab-btn" data-tab="quotes">百二名句库</button>
+    </div>
+
+    <!-- ===== 字库 ===== -->
+    <div id="tab-chars">
+      <div class="notice notice-gold">
+        <strong>选字铁律：</strong>以下 300 字全部经过国务院《通用规范汉字表》（2013 年版）核验，仅收录一级字表中的低频雅字与二级字表中的经典名物字，全国户籍、银行、民航、学信网 100% 零报错。
+      </div>
+      <div class="toolbar">
+        <input class="search-input" id="char-search" placeholder="搜字 / 拼音 / 本义 / 组合…如：璋、珩、君子">
+        <select class="filter-select" id="char-category">
+          <option value="">全部意象</option>
+        </select>
+        <select class="filter-select" id="char-pingze">
+          <option value="">平仄不限</option>
+          <option value="平">平声</option>
+          <option value="仄">仄声</option>
+        </select>
+        <select class="filter-select" id="char-level">
+          <option value="">层级不限</option>
+          <option value="一级">一级字表</option>
+          <option value="二级">二级字表</option>
+        </select>
+      </div>
+      <div style="font-size:13.5px; color:var(--ink-faint); margin-bottom:16px;" id="char-count"></div>
+      <div class="grid grid-3" id="char-list"></div>
+    </div>
+
+    <!-- ===== 句库 ===== -->
+    <div id="tab-quotes" style="display:none;">
+      <div class="notice notice-gold">
+        <strong>安全核验承诺：</strong>120 句原典名句全部由教研组逐篇核查《十三经注疏》与原诗小序，100% 剔除悼亡、弃妇、贬谪、凶煞语境，每一句均可放心化用入名。
+      </div>
+      <div class="toolbar">
+        <input class="search-input" id="quote-search" placeholder="搜诗句 / 出处 / 备选名…如：乔木、望舒、离骚">
+        <select class="filter-select" id="quote-volume">
+          <option value="">全部卷帙</option>
+        </select>
+      </div>
+      <div style="font-size:13.5px; color:var(--ink-faint); margin-bottom:16px;" id="quote-count"></div>
+      <div class="grid grid-2" id="quote-list"></div>
+    </div>
+
+    <div class="ink-divider"><span>◆</span></div>
+    <div style="text-align:center;">
+      <p style="color:var(--ink-soft); margin-bottom:20px;">挑出了心仪的字，却拿不准声调组合与谐音隐患？</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="surnames.html">查姓氏平仄黄金公式</a>
+        <a class="btn btn-primary" href="diagnosis.html">预约五维诊断 ¥199</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="data/characters.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script src="js/library.js"></script>
+</body>
+</html>
