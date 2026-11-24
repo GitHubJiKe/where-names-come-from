@@ -1,0 +1,2 @@
+/* 已迁移：全量数据不在发布目录内，源文件见仓库外 ../_source_data/。此文件仅用于覆盖线上旧版路径，防止旧 sandbox 残留。 */
+window.SURNAMES_EXTRA = {};

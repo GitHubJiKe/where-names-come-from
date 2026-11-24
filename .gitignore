@@ -11,7 +11,9 @@
 _tmp_*
 
 # ---------- 全量内容数据（属 ¥69 工具包交付物，不得进入公开仓库） ----------
-# 全量文件存放于站点目录之外的 _source_data/，站内只提交 build_preview.py 生成的试读切片
+# 全量文件存放于站点目录之外的 _source_data/，站内只提交 build_preview.py 生成的试读切片。
+# 下列路径现在只有「墓碑文件」（空数组 + 迁移说明），它们被强制提交入库：
+# 发布平台复用旧 sandbox 时不会同步删除远端文件，必须靠同路径覆盖把线上旧数据冲掉。
 data/characters.js
 data/quotes.js
 data/mines.js
