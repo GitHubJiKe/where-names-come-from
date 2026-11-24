@@ -9,3 +9,14 @@
 # 日志与临时文件
 *.log
 _tmp_*
+
+# ---------- 全量内容数据（属 ¥69 工具包交付物，不得进入公开仓库） ----------
+# 全量文件存放于站点目录之外的 _source_data/，站内只提交 build_preview.py 生成的试读切片
+data/characters.js
+data/quotes.js
+data/mines.js
+data/surnames.js
+data/surnames_extra.js
+data/surnames_all.js
+data/surnames_raw.json
+Chinese_Family_Name*.xlsx

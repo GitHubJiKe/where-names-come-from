@@ -7,7 +7,9 @@ import re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.dirname(BASE)
-OUT = os.path.join(BASE, "data")
+# 全量数据输出到站点发布目录之外：site/ 会被整体发布（GitHub Pages / 分享短链），
+# 全量内容必须留在私有目录，站内只放 build_preview.py 切片出来的试读版。
+OUT = os.path.join(SRC, "_source_data")
 
 B01 = os.path.join(SRC, "B01｜《起名必避的100个伪古风烂俗字与生僻字排雷表》（完整交付版）.md")
 B02 = os.path.join(SRC, "B02｜《名扬天下·中国家庭自主起名实操工具包（69元四合一完整版）》.md")

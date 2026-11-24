@@ -4,8 +4,10 @@ import json
 import os
 from openpyxl import load_workbook
 
-SRC = "/Users/yuanpengfei/Desktop/Projects/01-内容生产/business/site/Chinese_Family_Name（1k）.xlsx"
-DST = "/Users/yuanpengfei/Desktop/Projects/01-内容生产/business/site/data/surnames_raw.json"
+BASE = os.path.dirname(os.path.abspath(__file__))
+PRIVATE = os.path.join(os.path.dirname(BASE), "_source_data")
+SRC = os.path.join(PRIVATE, "Chinese_Family_Name（1k）.xlsx")
+DST = os.path.join(PRIVATE, "surnames_raw.json")
 
 wb = load_workbook(SRC, read_only=True, data_only=True)
 ws = wb["中文姓氏1074个"]  # 数据：第 2~1075 行，A=姓氏，B=人口(万人)

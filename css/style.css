@@ -92,7 +92,7 @@ a:hover { color: var(--cinnabar-deep); }
 
 .sec-head { text-align: center; margin-bottom: 48px; }
 .sec-kicker {
-  display: inline-block; font-size: 13px; letter-spacing: 6px;
+  display: block; font-size: 13px; letter-spacing: 6px;
   color: var(--gold); margin-bottom: 12px;
 }
 .sec-title {
@@ -549,3 +549,131 @@ a:hover { color: var(--cinnabar-deep); }
   .nav-toggle { display: block; }
   .sample-book { padding: 24px 20px; }
 }
+
+/* ============================================
+   限量试读门禁 + ¥69 工具包落地页
+   ============================================ */
+
+/* ---------- 试读提示条 ---------- */
+.teaser-bar {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 13px 18px; margin: 0 0 24px;
+  border: 1px solid rgba(168, 132, 63, 0.35);
+  border-left: 3px solid var(--gold);
+  background: rgba(168, 132, 63, 0.06);
+  border-radius: var(--radius);
+}
+.teaser-tag {
+  flex: none; font-size: 12.5px; letter-spacing: 2px; color: #fdf9ef;
+  background: var(--gold); padding: 3px 10px; border-radius: 2px;
+}
+.teaser-text { flex: 1; min-width: 220px; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+.teaser-text strong { color: var(--cinnabar); font-weight: 700; }
+.teaser-cta {
+  flex: none; font-size: 13.5px; color: var(--cinnabar); text-decoration: none;
+  border-bottom: 1px solid rgba(162, 58, 43, 0.35); padding-bottom: 1px; letter-spacing: 1px;
+}
+.teaser-cta:hover { color: var(--cinnabar-deep); border-bottom-color: var(--cinnabar-deep); }
+
+/* ---------- 锁定占位卡 ---------- */
+.locked-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; grid-column: 1 / -1; }
+.locked-card {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 176px; padding: 26px 20px;
+  border: 1px dashed var(--line); border-radius: var(--radius);
+  background: rgba(168, 132, 63, 0.035);
+}
+.lk-body { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.lk-ico { width: 22px; height: 22px; color: var(--gold); opacity: 0.85; }
+.lk-title { font-size: 14.5px; letter-spacing: 1px; color: var(--ink); }
+.lk-desc { font-size: 12.8px; color: var(--ink-faint); line-height: 1.8; max-width: 240px; }
+.lk-link {
+  margin-top: 4px; font-size: 13px; color: var(--cinnabar); text-decoration: none;
+  border-bottom: 1px solid rgba(162, 58, 43, 0.3); padding-bottom: 1px;
+}
+.lk-link:hover { color: var(--cinnabar-deep); }
+
+/* ---------- 落地页：价格与卖点 ---------- */
+.tk-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+.tk-price-row { display: flex; align-items: baseline; justify-content: center; gap: 14px; margin: 22px 0 6px; }
+.tk-price { font-size: 46px; font-weight: 900; color: var(--cinnabar); letter-spacing: 2px; line-height: 1; }
+.tk-price-old { font-size: 17px; color: var(--ink-faint); text-decoration: line-through; }
+.tk-price-note { font-size: 13.5px; color: var(--ink-faint); letter-spacing: 1px; }
+
+.tk-compare { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tk-compare th, .tk-compare td { padding: 13px 14px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; line-height: 1.75; }
+.tk-compare thead th { background: rgba(168, 132, 63, 0.08); font-size: 13.5px; letter-spacing: 1px; }
+.tk-compare thead th:first-child { width: 24%; color: var(--ink-soft); }
+.tk-compare .col-free { color: var(--ink-soft); }
+.tk-compare .col-paid { color: var(--ink); background: rgba(162, 58, 43, 0.03); }
+.tk-compare .col-paid strong { color: var(--cinnabar); }
+
+/* ---------- 落地页：内页样板 ---------- */
+.tk-samples { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tk-page {
+  background: #fdfbf5; border: 1px solid var(--line); border-radius: 2px;
+  box-shadow: 0 6px 22px rgba(80, 66, 40, 0.1); padding: 22px 20px; min-height: 268px;
+  display: flex; flex-direction: column;
+}
+.tk-page-cap {
+  font-size: 10.5px; letter-spacing: 2px; color: var(--ink-faint);
+  border-bottom: 1px solid var(--line-soft); padding-bottom: 7px; margin-bottom: 12px;
+}
+.tk-page-title { font-size: 14px; letter-spacing: 1px; color: var(--ink); margin-bottom: 10px; }
+.tk-page-glyph { font-size: 30px; font-weight: 900; color: var(--cinnabar); line-height: 1.2; }
+.tk-page-py { font-size: 11.5px; color: var(--ink-faint); letter-spacing: 0.5px; margin-bottom: 8px; }
+.tk-page-line { font-size: 11.5px; color: var(--ink-soft); line-height: 1.95; }
+.tk-page-line span { color: var(--ink-faint); }
+.tk-page-row { display: flex; gap: 8px; font-size: 11.5px; color: var(--ink-soft); padding: 5px 0; border-bottom: 1px dotted var(--line-soft); }
+.tk-page-row .k { flex: none; width: 62px; color: var(--gold); }
+.tk-page-foot { margin-top: auto; font-size: 10.5px; color: var(--ink-faint); letter-spacing: 1px; padding-top: 10px; }
+
+/* ---------- 落地页：购买三步 ---------- */
+.tk-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tk-step { text-align: center; padding: 26px 18px; }
+.tk-step-num {
+  width: 34px; height: 34px; line-height: 34px; border-radius: 50%;
+  background: var(--cinnabar); color: #fdf9ef; font-size: 15px;
+  margin: 0 auto 14px; letter-spacing: 0;
+}
+.tk-step h4 { font-size: 15.5px; letter-spacing: 1.5px; margin-bottom: 8px; }
+.tk-step p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.9; }
+
+/* ---------- 落地页：交付清单 ---------- */
+.tk-deliver { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.tk-deliver-item {
+  display: flex; gap: 12px; padding: 18px 18px;
+  border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--card);
+}
+.tk-deliver-num {
+  flex: none; font-size: 12px; color: var(--gold); letter-spacing: 1px;
+  border: 1px solid rgba(168, 132, 63, 0.4); border-radius: 2px;
+  width: 26px; height: 26px; line-height: 24px; text-align: center;
+}
+.tk-deliver-body h4 { font-size: 15px; letter-spacing: 1px; margin-bottom: 5px; }
+.tk-deliver-body p { font-size: 13px; color: var(--ink-soft); line-height: 1.85; }
+.tk-deliver-body em { font-style: normal; color: var(--cinnabar); }
+
+@media (max-width: 900px) {
+  .locked-wrap, .tk-samples, .tk-steps { grid-template-columns: 1fr 1fr; }
+  .tk-deliver { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .locked-wrap, .tk-samples, .tk-steps { grid-template-columns: 1fr; }
+  .tk-price { font-size: 38px; }
+  .tk-hero { padding: 48px 0 40px; }
+  .tk-compare { font-size: 13px; }
+  .tk-compare th, .tk-compare td { padding: 10px 9px; }
+}
+
+/* ---------- 组级锁定提示 ---------- */
+.formula-more {
+  font-size: 13px; color: var(--gold); padding-top: 8px;
+  border-top: 1px dashed var(--line-soft); margin-top: 4px;
+}
+.lock-hint {
+  font-size: 13px; color: var(--ink-faint); line-height: 1.9;
+  margin-top: 12px; padding: 10px 14px;
+  border-left: 2px solid var(--gold-soft); background: rgba(168, 132, 63, 0.04);
+}
+.lock-hint strong { color: var(--cinnabar); }

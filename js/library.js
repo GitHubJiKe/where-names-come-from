@@ -1,7 +1,11 @@
-/* 雅字库 / 名句库 交互逻辑 */
+/* 雅字库 / 名句库 交互逻辑（限量试读版）
+ * 数据源：data/preview.js（试读切片）——全量内容属 ¥69 工具包交付物，不随站点公开。
+ */
 (function () {
-  var CHARS = window.CHARACTERS || [];
-  var QUOTES = window.QUOTES || [];
+  var P = window.PREVIEW || {};
+  var G = window.NYLGate || { lockedCards: function () { return ""; }, meta: {} };
+  var CHARS = P.characters || [];
+  var QUOTES = P.quotes || [];
 
   // ---------- Tabs ----------
   var tabBtns = document.querySelectorAll(".tab-btn");
@@ -19,6 +23,9 @@
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
   function nl2br(s) { return esc(s).replace(/\n/g, "<br>"); }
+  function metaOf(key, fallback) {
+    return (G.meta && G.meta[key]) || fallback;
+  }
 
   // ---------- 字库 ----------
   var catSet = [];
@@ -35,6 +42,7 @@
     var cat = catSel.value;
     var pz = document.getElementById("char-pingze").value;
     var lv = document.getElementById("char-level").value;
+    var m = metaOf("characters", { total: 300, free: CHARS.length, unit: "字" });
     var list = CHARS.filter(function (c) {
       if (cat && c.category !== cat) return false;
       if (pz && c.pingze !== pz) return false;
@@ -46,8 +54,9 @@
       return true;
     });
     document.getElementById("char-count").textContent =
-      "共 " + list.length + " / " + CHARS.length + " 字";
-    document.getElementById("char-list").innerHTML = list.map(function (c) {
+      "试读命中 " + list.length + " / 全 " + m.total + " " + m.unit;
+
+    var cards = list.map(function (c) {
       var combos = c.combos
         ? '<div class="char-combos"><strong>入名示范：</strong>' + nl2br(c.combos) + "</div>"
         : "";
@@ -60,7 +69,20 @@
         combos +
         "</div>"
       );
-    }).join("") || '<p style="color:var(--ink-faint);">没有匹配的字，换个关键词试试。</p>';
+    }).join("");
+
+    if (!cards) {
+      document.getElementById("char-list").innerHTML =
+        '<p style="color:var(--ink-faint); grid-column:1/-1;">试读范围内没有匹配的字——该字可能在完整 300 字库中，可到「' +
+        '<a href="toolkit.html" style="color:var(--cinnabar);">¥69 工具包</a>」查阅全本。</p>';
+      return;
+    }
+
+    document.getElementById("char-list").innerHTML = cards + G.lockedCards([
+      { title: "还有 " + (m.total - m.free) + " 字完整词条", desc: "《说文》本义 · 典籍出处 · 笔画层级 · 入名示范组合" },
+      { title: "按五大意象分册", desc: "玉石礼器 / 草木山林 / 水云雨雪 / 日月晨曦 / 君子心性" },
+      { title: "PDF 全本 · 可打印", desc: "付款即发，离线案头查阅，不必联网逐条查" }
+    ]);
   }
 
   ["char-search", "char-category", "char-pingze", "char-level"].forEach(function (id) {
@@ -81,6 +103,7 @@
   function renderQuotes() {
     var q = document.getElementById("quote-search").value.trim().toLowerCase();
     var vol = volSel.value;
+    var m = metaOf("quotes", { total: 120, free: QUOTES.length, unit: "句" });
     var list = QUOTES.filter(function (item) {
       if (vol && item.volume !== vol) return false;
       if (q) {
@@ -89,8 +112,10 @@
       }
       return true;
     });
-    document.getElementById("quote-count").textContent = "共 " + list.length + " / 120 句";
-    document.getElementById("quote-list").innerHTML = list.map(function (item) {
+    document.getElementById("quote-count").textContent =
+      "试读命中 " + list.length + " / 全 " + m.total + " " + m.unit;
+
+    var cards = list.map(function (item) {
       return (
         '<div class="card card-hover quote-card">' +
         '<div class="quote-source">' + esc(item.id) + " · " + esc(item.source) + "</div>" +
@@ -99,7 +124,19 @@
         '<div class="quote-names"><strong>备选名：</strong>' + nl2br(item.names) + "</div>" +
         "</div>"
       );
-    }).join("") || '<p style="color:var(--ink-faint);">没有匹配的名句，换个关键词试试。</p>';
+    }).join("");
+
+    if (!cards) {
+      document.getElementById("quote-list").innerHTML =
+        '<p style="color:var(--ink-faint); grid-column:1/-1;">试读范围内没有匹配的名句——完整 120 句见 ¥69 工具包。</p>';
+      return;
+    }
+
+    document.getElementById("quote-list").innerHTML = cards + G.lockedCards([
+      { title: "还有 " + (m.total - m.free) + " 句完整化用方案", desc: "每条含原典出处 · 语境释义 · 提炼备选名 · 平仄分析" },
+      { title: "四卷分册 · 已剔除凶煞语境", desc: "诗经 / 楚辞 / 经哲 / 唐宋诗词，逐句核过上下文安全" },
+      { title: "可直接对着起名", desc: "每句给出 2—4 个可落户备选名，不必自己二次发挥" }
+    ]);
   }
 
   ["quote-search", "quote-volume"].forEach(function (id) {

@@ -5,6 +5,7 @@
     { href: "library.html", label: "雅字库·名句库" },
     { href: "surnames.html", label: "姓氏平仄矩阵" },
     { href: "mine.html", label: "排雷自查" },
+    { href: "toolkit.html", label: "工具包 ¥69" },
     { href: "diagnosis.html", label: "五维诊断 ¥199" },
     { href: "custom.html", label: "典籍定制 ¥980", cta: true }
   ];
@@ -43,7 +44,7 @@
       "</div>" +
       "</div>" +
       "<div>" +
-      "<h4>学术工具</h4>" +
+      "<h4>学术工具 · 限量试读</h4>" +
       '<a href="library.html">300 雅字库 / 120 名句库</a>' +
       '<a href="surnames.html">百姓平仄黄金公式</a>' +
       '<a href="mine.html">100 排雷字速查</a>' +
@@ -51,10 +52,10 @@
       "</div>" +
       "<div>" +
       "<h4>服务体系</h4>" +
+      '<a href="toolkit.html">自主起名工具包 ¥69</a>' +
       '<a href="diagnosis.html">五维姓名美学诊断 ¥199</a>' +
       '<a href="custom.html">传世家风典籍定制 ¥980</a>' +
-      '<a href="index.html#services">自主起名工具包 ¥69</a>' +
-      '<a href="index.html#contact">预约咨询</a>' +
+      '<a href="toolkit.html#buy">预约咨询 / 付款指引</a>' +
       "</div>" +
       "</div>" +
       '<div class="footer-bottom">名有来处 · 《名扬天下：中国姓名学》教研组出品 ｜ 依据《通用规范汉字表》（8105字）编纂 ｜ 微信公众号：名有来处</div>' +

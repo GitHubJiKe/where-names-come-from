@@ -1,8 +1,12 @@
-/* 全量姓氏声调检索 —— 1071 姓（数据由 build_surnames_all.py 生成） */
+/* 全量姓氏声调检索 —— 1071 姓（声调与人口为公开基础信息，全量开放作引流）
+ * 逐姓谐音雷区属 ¥69 工具包交付物，站内仅开放试读部分。
+ */
 (function () {
-  var ALL = window.SURNAMES_ALL || [];
-  var GROUPS = window.SURNAMES || [];
-  var EXTRA = window.SURNAMES_EXTRA || [];
+  var P = window.PREVIEW || {};
+  var G = window.NYLGate || { lockedCards: function () { return ""; }, meta: {} };
+  var ALL = P.surnamesAll || [];
+  var GROUPS = P.surnames || [];
+  var EXTRA = P.surnamesExtra || [];
   var GN = { 1: "阴平", 2: "阳平", 3: "上声", 4: "去声" };
   var MARKS = "āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ";
   var PLAIN = ["a", "e", "i", "o", "u", "v"];
@@ -122,12 +126,20 @@
         '<div class="surn-meta">人口第 ' + h.rank + " 位 · 约 " + h.pop + " 万人</div>" +
         (curated
           ? '<button class="surn-curated" data-surname="' + esc(h.s) + '">已收录雷区 · 查看排雷</button>'
-          : '<div class="surn-formula">黄金公式<br><strong>' + esc(formulaText(toneName)) + "</strong><br>专属雷区可预约诊断获取</div>") +
+          : '<div class="surn-formula">黄金公式<br><strong>' + esc(formulaText(toneName)) + "</strong><br>专属雷区与雅名示范见 ¥69 工具包</div>") +
         "</div>"
       );
     }).join("");
-    resultsEl.innerHTML = html ||
-      '<p style="color:var(--ink-faint); text-align:center; grid-column:1/-1;">未找到匹配的姓氏。</p>';
+    if (!html) {
+      resultsEl.innerHTML =
+        '<p style="color:var(--ink-faint); text-align:center; grid-column:1/-1;">未找到匹配的姓氏。</p>';
+    } else {
+      resultsEl.innerHTML = html + G.lockedCards([
+        { title: "逐姓专属雷区", desc: "该姓绝不能配哪些音、哪些字，配错了会变成什么外号" },
+        { title: "正统雅名示范", desc: "每个姓氏给出 3 个平仄合规的成品名，可直接对着起" },
+        { title: "四声黄金公式全本", desc: "含三平调 / 三上声 / 三去声的破局变法" }
+      ]);
+    }
     moreEl.textContent = hits.length > LIMIT
       ? "已显示前 " + LIMIT + " 条（共 " + hits.length + " 姓匹配），输入更多关键字缩小范围。"
       : "";

@@ -4,7 +4,10 @@
 import json
 import re
 
+import os
 BASE = "/Users/yuanpengfei/Desktop/Projects/01-内容生产/business/site"
+# 全量姓氏库同样输出到站点发布目录之外（见 build_data.py 说明）
+DATA = os.path.join(os.path.dirname(BASE), "_source_data")
 
 from pypinyin import pinyin as pp_pinyin, Style
 
@@ -53,7 +56,7 @@ def to_pinyin(surname):
 
 
 def main():
-    raw = json.load(open(f"{BASE}/data/surnames_raw.json", encoding="utf-8"))
+    raw = json.load(open(f"{DATA}/surnames_raw.json", encoding="utf-8"))
     out = []
     excluded = []
     for rank, item in enumerate(raw, 1):
@@ -73,7 +76,7 @@ def main():
         '["%s","%s",%d,%d]' % (s, py, t, pop) for s, py, t, pop in out
     )
     js = "/* 全量姓氏声调库：原表 1074 姓，剔除 3 条疑似错录后收录 1071 姓 · 由 build_surnames_all.py 生成，勿手改 */\nwindow.SURNAMES_ALL = [\n%s\n];\n" % lines
-    open(f"{BASE}/data/surnames_all.js", "w", encoding="utf-8").write(js)
+    open(f"{DATA}/surnames_all.js", "w", encoding="utf-8").write(js)
 
     # ---------- 校验报告 ----------
     from collections import Counter
@@ -88,7 +91,7 @@ def main():
     # 与现有重点矩阵做收录一致性抽查（主文件格式如 "姓003 张（Zhāng）"，含 萧/肖 变体）
     curated = set()
     for fn in ("surnames.js", "surnames_extra.js"):
-        txt = open(f"{BASE}/data/{fn}", encoding="utf-8").read()
+        txt = open(f"{DATA}/{fn}", encoding="utf-8").read()
         for m in re.finditer(r'"?surname"?\s*:\s*"([^"]+)"', txt):
             val = m.group(1)
             val = re.sub(r"^(?:姓)?[\d/]+(?:[—–\-][\d/]+)?\s*", "", val)

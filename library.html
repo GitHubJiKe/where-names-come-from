@@ -13,7 +13,7 @@
 
 <header class="page-hero">
   <div class="wrap">
-    <div class="sec-kicker">学术工具 · 免费开放</div>
+    <div class="sec-kicker">学术工具 · 限量试读</div>
     <h1 class="page-title">雅字库 · 名句库</h1>
     <p class="page-subtitle">300 个一级/二级规范雅字 · 120 句剔除凶丧语境的经史名句 —— 起名先从好字里挑</p>
   </div>
@@ -29,8 +29,9 @@
     <!-- ===== 字库 ===== -->
     <div id="tab-chars">
       <div class="notice notice-gold">
-        <strong>选字铁律：</strong>以下 300 字全部经过国务院《通用规范汉字表》（2013 年版）核验，仅收录一级字表中的低频雅字与二级字表中的经典名物字，全国户籍、银行、民航、学信网 100% 零报错。
+        <strong>选字铁律：</strong>本书收录的 300 字全部经过国务院《通用规范汉字表》（2013 年版）核验，仅收录一级字表中的低频雅字与二级字表中的经典名物字，全国户籍、银行、民航、学信网 100% 零报错。
       </div>
+      <div class="teaser-slot" data-key="characters" data-what="雅字"></div>
       <div class="toolbar">
         <input class="search-input" id="char-search" placeholder="搜字 / 拼音 / 本义 / 组合…如：璋、珩、君子">
         <select class="filter-select" id="char-category">
@@ -56,6 +57,7 @@
       <div class="notice notice-gold">
         <strong>安全核验承诺：</strong>120 句原典名句全部由教研组逐篇核查《十三经注疏》与原诗小序，100% 剔除悼亡、弃妇、贬谪、凶煞语境，每一句均可放心化用入名。
       </div>
+      <div class="teaser-slot" data-key="quotes" data-what="名句"></div>
       <div class="toolbar">
         <input class="search-input" id="quote-search" placeholder="搜诗句 / 出处 / 备选名…如：乔木、望舒、离骚">
         <select class="filter-select" id="quote-volume">
@@ -77,8 +79,8 @@
   </div>
 </section>
 
-<script src="data/characters.js"></script>
-<script src="data/quotes.js"></script>
+<script src="data/preview.js"></script>
+<script src="js/gate.js"></script>
 <script src="js/common.js"></script>
 <script src="js/library.js"></script>
 </body>

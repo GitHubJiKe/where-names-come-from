@@ -1,6 +1,8 @@
-/* 排雷速查 + 六步自检 交互逻辑 */
+/* 排雷速查 + 六步自检 交互逻辑（排雷表为限量试读版，六步自检完整可用） */
 (function () {
-  var MINES = window.MINES || [];
+  var P = window.PREVIEW || {};
+  var G = window.NYLGate || { lockedCards: function () { return ""; }, meta: {} };
+  var MINES = P.mines || [];
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -50,7 +52,9 @@
       }
       return true;
     });
-    document.getElementById("mine-count").textContent = "共命中 " + list.length + " / 100 个高危字";
+    var m = (G.meta && G.meta.mines) || { total: 100, free: MINES.length, unit: "字" };
+    document.getElementById("mine-count").textContent =
+      "试读命中 " + list.length + " / 全 " + m.total + " 个高危字";
 
     var html = PART_ORDER.map(function (p) {
       var group = list.filter(function (m) { return m.part === p; });
@@ -79,8 +83,17 @@
       );
     }).join("");
 
-    document.getElementById("mine-list").innerHTML =
-      html || '<p style="color:var(--ink-faint); text-align:center; padding:40px 0;">恭喜！这个字不在 100 高危黑名单中——但仍需过平仄、谐音、字表三关，建议继续用「六步自检」复核。</p>';
+    if (!html) {
+      document.getElementById("mine-list").innerHTML =
+        '<p style="color:var(--ink-faint); text-align:center; padding:40px 0;">恭喜！这个字不在试读的 12 个高危字中——但仍需过平仄、谐音、字表三关，建议继续用「六步自检」复核；完整 100 字黑名单见 ¥69 工具包。</p>';
+      return;
+    }
+
+    document.getElementById("mine-list").innerHTML = html + G.lockedCards([
+      { title: "还有 " + ((G.meta && G.meta.mines ? G.meta.mines.total - G.meta.mines.free : 88)) + " 个高危字未展示", desc: "逐字诊断 · 误用心理 · 正统替代字，覆盖三大红线区" },
+      { title: "三大红线区完整版", desc: "伪古风烂俗 50 · 训诂翻车 30 · 生僻歧义 20" },
+      { title: "办证前一页纸打勾单", desc: "六步自检可打印版，随工具包附送" }
+    ]);
   }
 
   ["mine-search", "mine-part"].forEach(function (id) {
