@@ -45,15 +45,19 @@
       }
       return true;
     });
-    document.getElementById("char-count").textContent = "共 " + list.length + " / 300 字";
+    document.getElementById("char-count").textContent =
+      "共 " + list.length + " / " + CHARS.length + " 字";
     document.getElementById("char-list").innerHTML = list.map(function (c) {
+      var combos = c.combos
+        ? '<div class="char-combos"><strong>入名示范：</strong>' + nl2br(c.combos) + "</div>"
+        : "";
       return (
         '<div class="card card-hover char-card">' +
         '<div class="char-glyph">' + esc(c.char) + "</div>" +
         '<div class="char-pinyin">' + esc(c.pinyin) + " · " + esc(c.tone) + "·" + esc(c.pingze) + "</div>" +
         '<div class="char-meta">' + (c.strokes ? c.strokes + " 画 · " : "") + esc(c.level) + "字表 · No." + String(c.id).padStart(3, "0") + "</div>" +
         '<div class="char-meaning">' + nl2br(c.meaning) + "</div>" +
-        '<div class="char-combos"><strong>入名示范：</strong>' + nl2br(c.combos) + "</div>" +
+        combos +
         "</div>"
       );
     }).join("") || '<p style="color:var(--ink-faint);">没有匹配的字，换个关键词试试。</p>';
